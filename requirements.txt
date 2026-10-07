@@ -1,0 +1,36 @@
+# Retina em Foco — Módulo 04 (IA Embarcada)
+# Python 3.10–3.13 (testado com 3.12)
+
+# Pré-processamento do Módulo 02 — versão FIXADA (commit) para garantir a paridade treino × inferência
+retina-pdi @ git+https://github.com/tiagopessoalima/pdib.git@70d02c46d345eecb2313ebc6a6051ec33ac58aab
+
+# Treinamento e conversão (PC). No Windows nativo o TensorFlow roda só em CPU — suficiente para este módulo.
+tensorflow>=2.20,<2.22
+# Inferência (.tflite) — o mesmo runtime no PC e no Raspberry Pi 5 (sucessor do tflite-runtime)
+ai-edge-litert>=2.0
+
+# Núcleo numérico / visão computacional
+numpy>=1.26
+opencv-python-headless>=4.9,<5
+scikit-learn>=1.4
+pillow>=10.0
+safetensors>=0.4                 # leitura dos pesos pré-treinados do EfficientNet-Lite0 (sem PyTorch)
+
+# Dados e visualização
+pandas>=2.1
+matplotlib>=3.8
+
+# Download dos dados públicos (Hugging Face Hub)
+huggingface_hub>=0.23
+pyarrow>=15.0
+requests>=2.31
+tqdm>=4.66
+
+# Medições de memória e ambiente de notebooks
+psutil>=5.9
+jupyterlab>=4.1
+ipykernel>=6.29
+ipywidgets>=8.1
+nbformat>=5.9
+nbclient>=0.10
+nbconvert>=7.16

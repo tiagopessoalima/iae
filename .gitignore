@@ -1,0 +1,16 @@
+# ambiente e caches
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.pytest_cache/
+*.egg-info/
+
+# dados baixados e tensores pré-processados (reproduzíveis com scripts/download_data.py e scripts/preparar_cache.py)
+data/raw/
+data/cache/
+outputs/
+
+# o manifesto e as partições são pequenos e definem o experimento: versione-os
+!data/manifest.csv
+!data/particoes.csv

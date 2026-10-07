@@ -1,0 +1,144 @@
+{
+  "versao": "1.0",
+  "gerado_por": "notebooks/04_Quantizacao_e_TFLite.ipynb",
+  "preprocessamento": {
+    "tamanho": 224,
+    "realce": "clahe",
+    "normalizacao": "uint8",
+    "recortar_fov": true,
+    "funcao": "retina_pdi.pipeline.preparar_para_inferencia",
+    "retina_pdi_commit": "70d02c46d345eecb2313ebc6a6051ec33ac58aab"
+  },
+  "entrada": "uint8 (1, 224, 224, 3) RGB, sem normalização (feita dentro do modelo)",
+  "criterio_limiar": "maior limiar com sensibilidade >= 90% na validação",
+  "modelos": {
+    "rd": {
+      "nome": "Retinopatia diabética referível",
+      "arquivo": "rd_efficientnet_lite0_int8.tflite",
+      "arquitetura": "efficientnet_lite0",
+      "quantizacao": "int8 (entrada uint8, saída float32)",
+      "limiar": 0.7812,
+      "validacao": {
+        "AUC": 0.9888,
+        "sensibilidade": 0.9013,
+        "especificidade": 0.9601
+      }
+    },
+    "glaucoma": {
+      "nome": "Glaucoma",
+      "arquivo": "glaucoma_efficientnet_lite0_int8.tflite",
+      "arquitetura": "efficientnet_lite0",
+      "quantizacao": "int8 (entrada uint8, saída float32)",
+      "limiar": 0.332,
+      "validacao": {
+        "AUC": 0.9161,
+        "sensibilidade": 0.9024,
+        "especificidade": 0.693
+      }
+    },
+    "dmri": {
+      "nome": "DMRI",
+      "arquivo": "dmri_efficientnet_lite0_int8.tflite",
+      "arquitetura": "efficientnet_lite0",
+      "quantizacao": "int8 (entrada uint8, saída float32)",
+      "limiar": 0.0938,
+      "validacao": {
+        "AUC": 0.9264,
+        "sensibilidade": 0.9048,
+        "especificidade": 0.8014
+      }
+    }
+  },
+  "metricas": {
+    "rd": {
+      "externo · DDR": {
+        "n": 500,
+        "positivos": 240,
+        "AUC": 0.9331,
+        "AUC_IC": "0.910–0.955",
+        "sensibilidade": 0.6708,
+        "sens_IC": "0.61–0.73",
+        "especificidade": 0.9846,
+        "esp_IC": "0.96–0.99",
+        "VPP": 0.9758,
+        "encaminhados": 0.33
+      },
+      "externo · ODIR": {
+        "n": 4481,
+        "positivos": 1608,
+        "AUC": 0.6752,
+        "AUC_IC": "0.655–0.696",
+        "sensibilidade": 0.2444,
+        "sens_IC": "0.22–0.27",
+        "especificidade": 0.968,
+        "esp_IC": "0.96–0.97",
+        "VPP": 0.8103,
+        "encaminhados": 0.1082
+      },
+      "teste · APTOS": {
+        "n": 550,
+        "positivos": 223,
+        "AUC": 0.9864,
+        "AUC_IC": "0.978–0.993",
+        "sensibilidade": 0.8879,
+        "sens_IC": "0.84–0.92",
+        "especificidade": 0.9572,
+        "esp_IC": "0.93–0.97",
+        "VPP": 0.934,
+        "encaminhados": 0.3855
+      }
+    },
+    "glaucoma": {
+      "externo · G1020": {
+        "n": 1020,
+        "positivos": 296,
+        "AUC": 0.5406,
+        "AUC_IC": "0.499–0.580",
+        "sensibilidade": 0.3649,
+        "sens_IC": "0.31–0.42",
+        "especificidade": 0.7044,
+        "esp_IC": "0.67–0.74",
+        "VPP": 0.3354,
+        "encaminhados": 0.3157
+      },
+      "teste · ODIR": {
+        "n": 484,
+        "positivos": 42,
+        "AUC": 0.9113,
+        "AUC_IC": "0.861–0.953",
+        "sensibilidade": 0.9524,
+        "sens_IC": "0.84–0.99",
+        "especificidade": 0.6719,
+        "esp_IC": "0.63–0.71",
+        "VPP": 0.2162,
+        "encaminhados": 0.3822
+      }
+    },
+    "dmri": {
+      "externo · RFMiD": {
+        "n": 207,
+        "positivos": 69,
+        "AUC": 0.9777,
+        "AUC_IC": "0.948–0.998",
+        "sensibilidade": 0.9275,
+        "sens_IC": "0.84–0.97",
+        "especificidade": 0.971,
+        "esp_IC": "0.93–0.99",
+        "VPP": 0.9412,
+        "encaminhados": 0.3285
+      },
+      "teste · ODIR": {
+        "n": 468,
+        "positivos": 41,
+        "AUC": 0.8973,
+        "AUC_IC": "0.826–0.957",
+        "sensibilidade": 0.7561,
+        "sens_IC": "0.61–0.86",
+        "especificidade": 0.8525,
+        "esp_IC": "0.82–0.88",
+        "VPP": 0.3298,
+        "encaminhados": 0.2009
+      }
+    }
+  }
+}

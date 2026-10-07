@@ -1,0 +1,9 @@
+# Raspberry Pi 5 — Raspberry Pi OS 64-bit (Bookworm: Python 3.11 · Trixie: Python 3.13)
+# Só inferência: sem TensorFlow. Todos os pacotes têm wheels aarch64 no PyPI/piwheels.
+
+ai-edge-litert>=2.0
+numpy>=1.26
+opencv-python-headless>=4.9,<5
+psutil>=5.9
+# mesmo commit do PC de treino: paridade do pré-processamento
+retina-pdi @ git+https://github.com/tiagopessoalima/pdib.git@70d02c46d345eecb2313ebc6a6051ec33ac58aab
